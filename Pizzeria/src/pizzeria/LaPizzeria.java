@@ -73,7 +73,6 @@ public class LaPizzeria {
         }catch (IllegalArgumentException e){
             System.out.println("ERROR: Imagen no disponible");
         }
-
     }
     
     private void preparar(Pizza p){
@@ -83,7 +82,6 @@ public class LaPizzeria {
         hornear(p);
         cortar();
         empacar();
-        pizzas.add(p);
-              
+        pizzas.add(p);       
     }
 }
