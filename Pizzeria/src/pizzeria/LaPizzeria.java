@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class LaPizzeria {
     
-    ArrayList<Pizza> pizzas= new ArrayList<>();
+    private ArrayList<Pizza> pizzas= new ArrayList<>();
     
     public void pedido(){
         Scanner  lectura = new Scanner(System.in);
@@ -36,34 +36,34 @@ public class LaPizzeria {
         
     }
     
-    public void mashMasa(Pizza p){
+    private void mashMasa(Pizza p){
         System.out.println("MASA\n"+p.getMasa());
     }
     
-    public void addSalsa(Pizza p){
+    private void addSalsa(Pizza p){
         System.out.println("SALSA\n"+p.getSalsa());
     }
     
-    public void addIngredientes(Pizza p){
+    private void addIngredientes(Pizza p){
         System.out.println("INGREDIENTES");
         for(String s:p.getIngredientes()){
             System.out.println(s);
         }
     }
     
-    public void hornear(Pizza p){
+    private void hornear(Pizza p){
             System.out.println("HORNEAR\n"+p.getTiempodehornear()+" minutos");
     }
     
-    public void cortar(){
+    private void cortar(){
         System.out.println("CORTAR\n1 minuto");
     }
-    public void empacar(){
+    private void empacar(){
         System.out.println("EMPACAR\n1 minuto");
     }
 
     
-    public void abrirImagen(String archivo){
+    private void abrirImagen(String archivo){
 
         try {
             File objetofile = new File (archivo);
@@ -76,7 +76,7 @@ public class LaPizzeria {
 
     }
     
-    public void preparar(Pizza p){
+    private void preparar(Pizza p){
         mashMasa(p);
         addSalsa(p);
         addIngredientes(p);
