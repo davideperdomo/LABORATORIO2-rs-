@@ -20,8 +20,9 @@ public class Pizza {
     }
     
     public void printIngredientes(){
+        System.out.println("INGREDIENTES");
         for(String i : ingredientes){
-            System.out.println("\n"+i);
+            System.out.println(i);
         }
     }
 
