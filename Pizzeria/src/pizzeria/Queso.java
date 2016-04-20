@@ -7,7 +7,8 @@ public class Queso extends Pizza {
         super();
         ingredientes.add("Quezo mozarella fresco");
         ingredientes.add("Parmesano");
-         this.ingredientes = ingredientes;  
+        this.tiempodehornear=10;
+        this.ingredientes = ingredientes;  
     }
     
     

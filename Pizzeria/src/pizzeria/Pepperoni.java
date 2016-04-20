@@ -12,7 +12,8 @@ public class Pepperoni extends Pizza {
         ingredientes.add("Rodajas de pepperoni");
         ingredientes.add("Rodajas de cebolla");
         ingredientes.add("Queso parmesano rallado");
-         this.ingredientes = ingredientes;   
+        this.tiempodehornear=12;
+        this.ingredientes = ingredientes;   
     }
     
     
