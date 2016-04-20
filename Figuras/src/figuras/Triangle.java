@@ -2,7 +2,7 @@ package figuras;
 
 public class Triangle extends Shape {
     private double widht;
-    private double height;
+    private double height;    
     private int tipo;
     
     public Triangle(double widht, double height, int tipo, int numSides) {
@@ -11,6 +11,13 @@ public class Triangle extends Shape {
         this.height = height;
         this.tipo=tipo;
     }
+
+    public Triangle(int tipo, int numSides) {
+        super(numSides);
+        this.tipo = tipo;
+    }
+    
+    
 
     @Override
     double getArea() {
