@@ -31,9 +31,7 @@ public class Servicios {
         usuarios.add(usuario);
     }
     
-    public void comentar(){
-        System.out.println("Nick");
-        String nick = lectura.next();
+    public void comentar(String nick){
         for(Usuario u : usuarios){
             if(u.getNick().equals(nick)){
                 Comentario comentario = new Comentario();
@@ -48,10 +46,8 @@ public class Servicios {
         }
     }
     
-    public void printComentarios(){
+    public void printComentarios(String nick){
         ArrayList<Comentario> comentarios;
-        System.out.println("Nick");
-        String nick = lectura.next();
         for(Usuario u : usuarios){
             if(u.getNick().equals(nick)){
                 comentarios = u.getComentarios();
@@ -62,9 +58,7 @@ public class Servicios {
         }
     }
     
-    public void subirFoto(){
-        System.out.println("Nick");
-        String nick = lectura.next();
+    public void subirFoto(String nick){
         for(Usuario u : usuarios){
             if(u.getNick().equals(nick)){
                 Fotografia foto = new Fotografia();
@@ -86,7 +80,7 @@ public class Servicios {
         //ArrayList<Usuario> etiquetados;
         System.out.println("cuantos etiquetados?");
         int n = lectura.nextInt();
-        for(int i =0; 2<n;i++){
+        for(int i =0; 2<=n;i++){
             System.out.println("nick etiquetado "+(i+1)+"?");
             String nick = lectura.next();
             for(Usuario u : usuarios){
@@ -100,6 +94,54 @@ public class Servicios {
             }
         }
         
+    }
+    
+    public void buscarUsuarios(){
+        System.out.println("Nick?");
+        String nick = lectura.next();
+        for(Usuario u : usuarios){
+            if(u.getNick().equals(nick)){
+                
+            }
+        }
+    }
+    
+    public void listarComentarios(){
+        System.out.println("Nick?");
+        String nick = lectura.next();
+        for(Usuario u : usuarios){
+            if(u.getNick().equals(nick)){
+                //System.out.println(u.getComentarios());
+            }
+        }
+    }
+    
+    public void listarFotos(){
+        System.out.println("Nick?");
+        String nick = lectura.next();
+        for(Usuario u : usuarios){
+            if(u.getNick().equals(nick)){
+                //System.out.println(u.getFotos());
+            }
+        }
+    }
+    
+    public void buscar(){
+        System.out.println("Palabra?");
+        String palabra = lectura.next();
+        for(Usuario u : usuarios){
+            ArrayList<Comentario> comentarios = u.getComentarios();
+            for(Comentario c : comentarios){
+                String[]palabras=c.getTexto().split(" ");
+                for(String i: palabras){
+                    if(i.equals(palabra)){
+                        System.out.println(c.getTexto());
+                    }
+                }
+            }
+            
+            
+        }
     }
             
 }
