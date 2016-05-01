@@ -16,6 +16,10 @@ public class Servicios {
     //ArrayList<Comentario> comentarios = new ArrayList<>();
     Scanner lectura = new Scanner(System.in);
     
+    public void serializar(){
+        dao.serializarUsuarios(usuarios);
+    }
+    
     public void crearUsuario(){
         System.out.println("Nombre? ");
         String nombre = lectura.next();
