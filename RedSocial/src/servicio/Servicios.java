@@ -101,7 +101,7 @@ public class Servicios {
         String nick = lectura.next();
         for(Usuario u : usuarios){
             if(u.getNick().equals(nick)){
-                
+                System.out.println(u);
             }
         }
     }
@@ -111,7 +111,10 @@ public class Servicios {
         String nick = lectura.next();
         for(Usuario u : usuarios){
             if(u.getNick().equals(nick)){
-                //System.out.println(u.getComentarios());
+                ArrayList<Comentario> comentarios = u.getComentarios();
+                for(Comentario c : comentarios){
+                    System.out.println(c);
+                }
             }
         }
     }
