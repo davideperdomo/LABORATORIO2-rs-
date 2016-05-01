@@ -20,6 +20,10 @@ public class Servicios {
         dao.serializarUsuarios(usuarios);
     }
     
+    public void deserializar(){
+        this.usuarios=dao.leerUsuarios();
+    }
+    
     public void crearUsuario(){
         System.out.println("Nombre? ");
         String nombre = lectura.next();

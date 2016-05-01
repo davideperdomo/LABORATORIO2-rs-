@@ -20,13 +20,15 @@ public class Dao{
         }
     }
     
-    public void leerUsuarios(){
+    public ArrayList<Usuario> leerUsuarios(){
+        ArrayList<Usuario> usuariosLeidos = null;
         try{
             ObjectInputStream leerObjeto = new ObjectInputStream(new FileInputStream("DATABASE.txt"));
-            ArrayList<Usuario> usuariosLeidos = (ArrayList<Usuario>) leerObjeto.readObject();
+            usuariosLeidos = (ArrayList<Usuario>) leerObjeto.readObject();
             leerObjeto.close();
         }catch(Exception e){
             
         }
+        return usuariosLeidos;
     }
 }
