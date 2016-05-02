@@ -15,7 +15,7 @@ public class Servicios {
     ArrayList<Usuario> usuarios = new ArrayList<>();
     //ArrayList<Comentario> comentarios = new ArrayList<>();
     Scanner lectura = new Scanner(System.in);
-    
+    //
     public void serializar(){
         dao.serializarUsuarios(usuarios);
     }
@@ -23,7 +23,7 @@ public class Servicios {
     public void deserializar(){
         this.usuarios=dao.leerUsuarios();
     }
-    
+    //
     public void crearUsuario(){
         System.out.println("Nombre? ");
         String nombre = lectura.next();
@@ -77,7 +77,6 @@ public class Servicios {
                 foto.setNombre(nombre);
                 foto.setDescripcion(descripcion);
                 u.addFotos(foto);
-                System.out.println("error");
                 etiquetarFoto(foto);
                 
             }
@@ -88,7 +87,7 @@ public class Servicios {
         //ArrayList<Usuario> etiquetados;
         System.out.println("cuantos etiquetados?");
         int n = lectura.nextInt();
-        for(int i =0; 2<=n;i++){
+        for(int i =0; i<=n;i++){
             System.out.println("nick etiquetado "+(i+1)+"?");
             String nick = lectura.next();
             for(Usuario u : usuarios){

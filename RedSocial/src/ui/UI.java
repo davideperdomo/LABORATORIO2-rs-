@@ -31,6 +31,7 @@ public class UI {
                     busquedas();
                     break;
             }
+            servicio.serializar();
             System.out.println("continuar?1.");
             m = lectura.nextInt();
         }while(m==1);
@@ -60,12 +61,14 @@ public class UI {
     }
     
     public void menu(){
+        servicio.deserializar();
         do{
             System.out.println("Choice?1.2.3.");
             int opcion = lectura.nextInt();
             switch(opcion){
                 case 1 :
                     servicio.crearUsuario();
+                    servicio.serializar();
                     break;
                 case 2 :
                     usuarioMenu();
