@@ -1,3 +1,6 @@
+/**
+ * data Información de la aplicación
+ */
 package data;
 
 import java.io.Serializable;

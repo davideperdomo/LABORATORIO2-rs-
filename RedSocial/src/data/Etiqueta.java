@@ -5,21 +5,23 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 /**
- *
+ * Clase Etiqueta que implementa la interfaz serializable
+ * Guarda las coordenadas del marco de la etiqueta en la fotografía
  * @author David
  */
 public class Etiqueta implements Serializable{
     public int[] coordenadas;
-    /*String nick;*/
+    String nick;
     /**
      * Constructor de la Etiqueta 
      * Ingresa las coordenadas del marco de la etiqueta del usuario
      * @param coordenadax
      * @param coordenaday 
      */    
-    public Etiqueta(int coordenadax, int coordenaday) {
+    public Etiqueta(int coordenadax, int coordenaday,String nick) {
         int[] xy = {coordenadax, coordenaday};
         this.coordenadas = xy;
+        this.nick = nick;
     }
     
     public int[] getCoordenadas() {
@@ -36,7 +38,7 @@ public class Etiqueta implements Serializable{
      */
     @Override
     public String toString() {
-        return /*"Nick="+nick+*/" ,coordenadas=" + Arrays.toString(coordenadas) + '}';
+        return "Nick="+nick+" ,coordenadas=" + Arrays.toString(coordenadas) + '}';
     }
     
     

@@ -1,3 +1,6 @@
+/**
+ * Main ejecita la aplicación 
+ */
 package Main;
 
 import Excepcion.ExcepcionSistema;

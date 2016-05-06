@@ -1,4 +1,6 @@
-
+/**
+ * ui Interfaz del Usuario
+ */
 package ui;
 
 import Excepcion.ExcepcionSistema;
@@ -9,14 +11,19 @@ import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 import servicio.Servicios;
 
-/**
- *
+/** 
+ * Clase Interfaz del Usuario
+ * Conecta la aplicacion con el usuario
  * @author David
  */
 public class UI {
     Servicios servicio = new Servicios();BufferedReader lectura= new BufferedReader(new InputStreamReader(System.in));
     int m;
     int opcion;
+    /** Menú del usuario
+     * 
+     * @throws IOException 
+     */
     public void usuarioMenu() throws IOException {
         System.out.println("Ingrese Nick");
         String nick;
@@ -42,7 +49,10 @@ public class UI {
             m = Integer.parseInt(lectura.readLine());
         }while(m==1);
     }
-    
+    /** Menú de busquedas
+     * 
+     * @throws IOException 
+     */
     public void busquedas() throws IOException{
         do{try {
             System.out.println("Menu Busquedas: 1.Buscar Usuario-2.Listar Comentarios-3.Listar Fotos-4.Buscar palabra en comentarios");
@@ -68,7 +78,11 @@ public class UI {
             m = Integer.parseInt(lectura.readLine());
         }while(m==1);
     }
-    
+    /** Menú de la aplicación
+     * 
+     * @throws IOException
+     * @throws ExcepcionSistema 
+     */
     public void menu() throws IOException, ExcepcionSistema{
         File file = new File("DATABASE.txt");
         if(file.exists()){
