@@ -1,19 +1,19 @@
 
 package data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author David
  */
-public class Fotografia {
+public class Fotografia implements Serializable{
     private String nombre;
     private String descripcion;
     private ArrayList<Etiqueta> etiquetas = new ArrayList<>();;
     
-    private Usuario publicador;
-    //private ArrayList<Usuario> etiquetados;
+    //private Usuario publicador;
 
     public String getNombre() {
         return nombre;
@@ -26,11 +26,11 @@ public class Fotografia {
     public ArrayList<Etiqueta> getEtiquetas() {
         return etiquetas;
     }
-
+/*
     public Usuario getPublicador() {
         return publicador;
     }
-
+*/
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -45,14 +45,14 @@ public class Fotografia {
     
     
     
-
+/*
     public void setPublicador(Usuario publicador) {
         this.publicador = publicador;
     }
-
+*/
     @Override
     public String toString() {
-        return "Fotografia{" + "nombre=" + nombre + ", descripcion=" + descripcion + ", etiquetas=" + etiquetas + ", publicador=" + publicador + '}';
+        return "Fotografia{" + "nombre=" + nombre + ", descripcion=" + descripcion + ", etiquetas=" + etiquetas + /*", publicador=" + publicador +*/ '}';
     }
 
     

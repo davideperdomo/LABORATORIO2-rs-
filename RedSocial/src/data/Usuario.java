@@ -2,7 +2,6 @@ package data;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 /**
  *
@@ -14,10 +13,10 @@ public class Usuario implements Serializable{
     private int edad;
     private String clave;
     private String correo;
-    
+    private Comentario coment;
     private ArrayList<Comentario> comentarios = new ArrayList<>();
     private ArrayList<Fotografia> fotosPublicadas = new ArrayList<>();
-    private ArrayList<Fotografia> fotosEtiquetadas;
+    private ArrayList<Fotografia> fotosEtiquetadas = new ArrayList<>();
 
     public Usuario(String nombre, String nick, int edad, String clave, String correo) {
         this.nombre = nombre;
@@ -27,7 +26,6 @@ public class Usuario implements Serializable{
         this.correo = correo;
     }
        
-    
     public String getNombre() {
         return nombre;
     }
@@ -99,7 +97,7 @@ public class Usuario implements Serializable{
 
     @Override
     public String toString() {
-        return "Usuario{" + "nombre=" + nombre + ", nick=" + nick + ", edad=" + edad + ", clave=" + clave + ", correo=" + correo + '}';
+        return "Usuario{" + "nombre=" + nombre + ", nick=" + nick + ", edad=" + edad + ", correo=" + correo + '}';
     }
     
     

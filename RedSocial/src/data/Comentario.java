@@ -1,13 +1,18 @@
 
 package data;
 
+import java.io.Serializable;
+
 /**
  *
  * @author David
  */
-public class Comentario {
+public class Comentario implements Serializable{
     private String texto;
     private String fecha;
+
+    public Comentario() {
+    }
 
     public String getTexto() {
         return texto;

@@ -1,7 +1,11 @@
 
 package ui;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.InputMismatchException;
 import servicio.Servicios;
 
 /**
@@ -9,16 +13,17 @@ import servicio.Servicios;
  * @author David
  */
 public class UI {
-    Servicios servicio = new Servicios();
-    Scanner lectura = new Scanner(System.in);
+    Servicios servicio = new Servicios();BufferedReader lectura= new BufferedReader(new InputStreamReader(System.in));
     int m;
     int opcion;
-    public void usuarioMenu(){
-        System.out.println("Nick?");
-        String nick = lectura.next();
+    public void usuarioMenu() throws IOException {
+        System.out.println("Ingrese Nick");
+        String nick;
+        nick = lectura.readLine();
         do{
-            System.out.println("Menu2?1.2.3.");
-            opcion = lectura.nextInt();
+            System.out.println("Opciones Usuario:1.Comentar-2.Subir foto-3.Busquedas");
+            try {opcion = Integer.parseInt(lectura.readLine());
+            } catch (NumberFormatException ex) {System.out.println("Opcion invalida");}
             switch(opcion){
                 case 1:
                     servicio.comentar(nick);
@@ -32,15 +37,16 @@ public class UI {
                     break;
             }
             servicio.serializar();
-            System.out.println("continuar?1.");
-            m = lectura.nextInt();
+            System.out.println("1.Continuar menú de usuario");
+            m = lectura.read();
         }while(m==1);
     }
     
-    public void busquedas(){
+    public void busquedas() throws IOException{
         do{
-            System.out.println("Menubusquedas?1.2.3.4.");
-            opcion = lectura.nextInt();
+            System.out.println("Menu Busquedas: 1.Buscar Usuario-2.Listar Comentarios-3.Listar Fotos-4.Buscar palabra en comentarios");
+            try {opcion = Integer.parseInt(lectura.readLine());
+            } catch (NumberFormatException ex) {System.out.println("Opcion invalida");            }
             switch(opcion){
                 case 1:
                     servicio.buscarUsuarios();
@@ -55,16 +61,26 @@ public class UI {
                     servicio.buscar();
                     break;
             }
-            System.out.println("continuar?1.");
-            m = lectura.nextInt();
+            System.out.println("1.Continuar menú de busquedas");
+            m = lectura.read();
         }while(m==1);
     }
     
-    public void menu(){
+    public void menu() throws IOException{
+        File file = new File("DATABASE.txt");
+        if(file.exists()){
         servicio.deserializar();
+        }
         do{
-            System.out.println("Choice?1.2.3.");
-            int opcion = lectura.nextInt();
+            
+            try{
+            System.out.println("1.Registrarse-2.Ingresar a Red Social-3.Busquedas-4.Reiniciar data");
+            int opcion = Integer.parseInt(lectura.readLine());
+            }catch(NumberFormatException e){
+                System.out.println("Opcion invalida");
+                
+            }
+            
             switch(opcion){
                 case 1 :
                     servicio.crearUsuario();
@@ -75,9 +91,13 @@ public class UI {
                     break;
                 case 3:
                     busquedas();
+                    break;
+                case 4:
+                    file.delete();
             }
-            System.out.println("continuar?1.");
-            m = lectura.nextInt();
+            System.out.println("1.Continuar menú inicial");
+            try {m = Integer.parseInt(lectura.readLine());
+            } catch (NumberFormatException ex) {System.out.println("Opcion invalida");            }
         }while(m==1);
         
     }

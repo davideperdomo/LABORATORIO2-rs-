@@ -1,11 +1,13 @@
 
 package data;
 
+import java.io.Serializable;
+
 /**
  *
  * @author David
  */
-public class Etiqueta {
+public class Etiqueta implements Serializable{
     public int[] coordenadas;
     
     public Etiqueta(int coordenadax, int coordenaday) {

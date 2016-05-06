@@ -16,7 +16,7 @@ public class Dao{
             escribirUsuarios.writeObject(usuarios);
             escribirUsuarios.close();
         }catch(Exception e){
-            
+            System.out.println("Error en serializacion");
         }
     }
     
@@ -27,7 +27,7 @@ public class Dao{
             usuariosLeidos = (ArrayList<Usuario>) leerObjeto.readObject();
             leerObjeto.close();
         }catch(Exception e){
-            
+            System.out.println("Error en lectura");
         }
         return usuariosLeidos;
     }
