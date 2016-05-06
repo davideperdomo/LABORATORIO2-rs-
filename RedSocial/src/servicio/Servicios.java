@@ -7,18 +7,22 @@ import data.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
-/**
+/**Cl
  *
  * @author David
  */
 public class Servicios {
     Dao dao = new Dao();
     ArrayList<Usuario> usuarios = new ArrayList<>();
-    //ArrayList<Comentario> comentarios = new ArrayList<>();
     BufferedReader lectura= new BufferedReader(new InputStreamReader(System.in));
-
+    Date f = new Date();
+    DateFormat date = new SimpleDateFormat("dd/MM/yyyy");
+    
     public void serializar(){
         dao.serializarUsuarios(usuarios);
     }
@@ -62,8 +66,7 @@ public class Servicios {
                 String texto = lectura.readLine();
                 if(texto.length()>200){
                     throw new ExcepcionSistema("El comentario debe tener menos de 200 caracteres");}
-                System.out.println("Fecha ");
-                String fecha = lectura.readLine();;
+                String fecha = date.format(new Date());
                 comentario.setTexto(texto);
                 comentario.setFecha(fecha);
                 u.addComentarios(comentario);

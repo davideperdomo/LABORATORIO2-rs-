@@ -12,6 +12,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
+import java.text.*;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +31,7 @@ public class Test {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        try {
+        /*try {
             BufferedReader lectura= new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Nombre: ");
             String nombre = lectura.readLine();
@@ -42,6 +47,12 @@ public class Test {
             String correo = lectura.readLine();
             }catch (NumberFormatException e) {
             System.out.println("Opcion Invalida");}
+        int[] enteros = {1,6};
+        System.out.println(Arrays.toString(enteros));+*/
+        //Date f = ;
+        DateFormat date = new SimpleDateFormat("dd/MM/yyyy");
+        String fecha = date.format(new Date());
+        System.out.println(fecha);
     }
     
 }
