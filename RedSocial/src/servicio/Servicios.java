@@ -1,6 +1,7 @@
 
 package servicio;
 
+import Excepcion.ExcepcionSistema;
 import dao.Dao;
 import data.*;
 import java.io.BufferedReader;
@@ -18,7 +19,6 @@ public class Servicios {
     ArrayList<Comentario> comentarios = new ArrayList<>();
     BufferedReader lectura= new BufferedReader(new InputStreamReader(System.in));
 
-//
     public void serializar(){
         dao.serializarUsuarios(usuarios);
     }
@@ -26,21 +26,32 @@ public class Servicios {
     public void deserializar(){
         this.usuarios=dao.leerUsuarios();
     }
-    public void crearUsuario() throws IOException{
+    public void crearUsuario() throws IOException, ExcepcionSistema{
+        try{
         System.out.println("Nombre: ");
         String nombre = lectura.readLine();
+        if(nombre.length()>100){
+            throw new ExcepcionSistema("El nombre tener menos de 100 caracteres");}
         System.out.println("Nick: ");
         String nick = lectura.readLine();
+        boolean n = true;
+        for(Usuario u: usuarios){
+            if(n!=u.getNick().equalsIgnoreCase(nick)){
+                throw new ExcepcionSistema(nick+" ya está usado");}}
         System.out.println("edad: ");
         int edad = 0;
         try {edad = Integer.parseInt(lectura.readLine());
         } catch (IOException ex) {System.out.println("Formato invalido");}
+        if(edad<18){throw new ExcepcionSistema("Debe ser mayor de 18 años");}
         System.out.println("clave: ");
-        String clave = lectura.readLine();;
+        String clave = lectura.readLine();
+        if(clave.equals("123456")){throw new ExcepcionSistema("Clave insegura");}
         System.out.println("correo: ");
         String correo = lectura.readLine();
+        if(correo.indexOf("@")==-1){throw new ExcepcionSistema("Formato invalido");}
         Usuario usuario = new Usuario(nombre, nick, edad, clave, correo);
         usuarios.add(usuario);
+        }catch(ExcepcionSistema es){System.out.println(es);}
     }
     
     public void comentar(String nick) throws IOException{

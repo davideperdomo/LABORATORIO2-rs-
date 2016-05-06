@@ -1,6 +1,7 @@
 
 package ui;
 
+import Excepcion.ExcepcionSistema;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -43,11 +44,11 @@ public class UI {
     }
     
     public void busquedas() throws IOException{
-        do{
+        do{try {
             System.out.println("Menu Busquedas: 1.Buscar Usuario-2.Listar Comentarios-3.Listar Fotos-4.Buscar palabra en comentarios");
-            try {opcion = Integer.parseInt(lectura.readLine());
-            } catch (NumberFormatException ex) {System.out.println("Opcion invalida");            }
-            switch(opcion){
+            
+                opcion = Integer.parseInt(lectura.readLine());
+                switch(opcion){
                 case 1:
                     servicio.buscarUsuarios();
                     break;
@@ -60,27 +61,23 @@ public class UI {
                 case 4:
                     servicio.buscar();
                     break;
-            }
+                }
+            } catch (NumberFormatException ex) {System.out.println("Opcion invalida");            }
+            
             System.out.println("1.Continuar menú de busquedas");
             m = lectura.read();
         }while(m==1);
     }
     
-    public void menu() throws IOException{
+    public void menu() throws IOException, ExcepcionSistema{
         File file = new File("DATABASE.txt");
         if(file.exists()){
         servicio.deserializar();
         }
         do{
-            
             try{
             System.out.println("1.Registrarse-2.Ingresar a Red Social-3.Busquedas-4.Reiniciar data");
             int opcion = Integer.parseInt(lectura.readLine());
-            }catch(NumberFormatException e){
-                System.out.println("Opcion invalida");
-                
-            }
-            
             switch(opcion){
                 case 1 :
                     servicio.crearUsuario();
@@ -94,7 +91,7 @@ public class UI {
                     break;
                 case 4:
                     file.delete();
-            }
+            }}catch(NumberFormatException e){System.out.println("Opcion invalida");}
             System.out.println("1.Continuar menú inicial");
             try {m = Integer.parseInt(lectura.readLine());
             } catch (NumberFormatException ex) {System.out.println("Opcion invalida");            }

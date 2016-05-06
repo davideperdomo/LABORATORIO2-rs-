@@ -28,17 +28,19 @@ public class Test {
     public static void main(String[] args) throws IOException {
         try {
             BufferedReader lectura= new BufferedReader(new InputStreamReader(System.in));
-            //Scanner numero=new Scanner(System.in);
-            System.out.println("titulo?");
+            System.out.println("Nombre: ");
             String nombre = lectura.readLine();
-            System.out.println("Desea añadir descripcion?1.Si");
-            int choice = Integer.parseInt(lectura.readLine());
-            String descripcion;
-            if(choice==1){
-                System.out.println("Ingrese descripcion");
-                descripcion = lectura.readLine();
-            }else{ descripcion = "No hay descripcion";}
-        }catch (NumberFormatException e) {
+            System.out.println("Nick: ");
+            String nick = lectura.readLine();
+            System.out.println("edad: ");
+            int edad = 0;
+            try {edad = Integer.parseInt(lectura.readLine());
+            } catch (IOException ex) {System.out.println("Formato invalido");}
+            System.out.println("clave: ");
+            String clave = lectura.readLine();;
+            System.out.println("correo: ");
+            String correo = lectura.readLine();
+            }catch (NumberFormatException e) {
             System.out.println("Opcion Invalida");}
     }
     
