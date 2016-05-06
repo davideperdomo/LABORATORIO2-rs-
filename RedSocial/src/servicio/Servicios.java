@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class Servicios {
     Dao dao = new Dao();
     ArrayList<Usuario> usuarios = new ArrayList<>();
-    ArrayList<Comentario> comentarios = new ArrayList<>();
+    //ArrayList<Comentario> comentarios = new ArrayList<>();
     BufferedReader lectura= new BufferedReader(new InputStreamReader(System.in));
 
     public void serializar(){
@@ -26,7 +26,7 @@ public class Servicios {
     public void deserializar(){
         this.usuarios=dao.leerUsuarios();
     }
-    public void crearUsuario() throws IOException, ExcepcionSistema{
+    public void crearUsuario() throws IOException{
         try{
         System.out.println("Nombre: ");
         String nombre = lectura.readLine();
@@ -34,9 +34,8 @@ public class Servicios {
             throw new ExcepcionSistema("El nombre tener menos de 100 caracteres");}
         System.out.println("Nick: ");
         String nick = lectura.readLine();
-        boolean n = true;
         for(Usuario u: usuarios){
-            if(n!=u.getNick().equalsIgnoreCase(nick)){
+            if(u.getNick().equalsIgnoreCase(nick)==true){
                 throw new ExcepcionSistema(nick+" ya está usado");}}
         System.out.println("edad: ");
         int edad = 0;
@@ -55,18 +54,22 @@ public class Servicios {
     }
     
     public void comentar(String nick) throws IOException{
+        try{
         for(Usuario u : usuarios){
             if(u.getNick().equals(nick)){
                 Comentario comentario = new Comentario();
                 System.out.println("Texto ");
                 String texto = lectura.readLine();
+                if(texto.length()>200){
+                    throw new ExcepcionSistema("El comentario debe tener menos de 200 caracteres");}
                 System.out.println("Fecha ");
                 String fecha = lectura.readLine();;
                 comentario.setTexto(texto);
                 comentario.setFecha(fecha);
                 u.addComentarios(comentario);
             }
-        }
+        }}catch(ExcepcionSistema es){System.out.println(es);}
+        
     }
     
     public void printComentarios(String nick){
@@ -82,6 +85,7 @@ public class Servicios {
     }
     
     public void subirFoto(String nick) throws IOException{
+        try{
         for(Usuario u : usuarios){
             if(u.getNick().equals(nick)){
                 Fotografia foto = new Fotografia();
@@ -93,19 +97,23 @@ public class Servicios {
                 if(choice==1){
                     System.out.println("Ingrese descripcion");
                     descripcion = lectura.readLine();
+                    if(descripcion.length()>200){
+                        throw new ExcepcionSistema("La descripcion debe tener menos de 200 caracteres");}
                 }else{ descripcion = "No hay descripcion";}
                 foto.setNombre(nombre);
                 foto.setDescripcion(descripcion);
                 u.addFotos(foto);
                 etiquetarFoto(foto);
             }
-        }
+        }}catch(ExcepcionSistema es){System.out.println(es);}
     }
     
     public void etiquetarFoto(Fotografia foto) throws IOException{
-        //ArrayList<Usuario> etiquetados;
-        System.out.println("Ingrese cuantos etiquetados hay en la foto");
+        try{
+        System.out.println("Ingrese cuantos etiquetados hay en la foto(2 a 5 etiquetados)");
         int n = Integer.parseInt(lectura.readLine());
+        if(n<2){throw new ExcepcionSistema("Deben haber mas de 2 etiquetados");}
+        if(n>5){throw new ExcepcionSistema("Deben haber menos de 5 etiqutados");}
         for(int i =0; i<n;i++){
             System.out.println("Ingrese nick etiquetado "+(i+1)+"  ");
             String nick = lectura.readLine();;
@@ -119,7 +127,7 @@ public class Servicios {
                     u.setFotosEtiquetadas(foto);
                 }               
             }
-        }
+        }}catch(ExcepcionSistema es){System.out.println(es);}
         
     }
     

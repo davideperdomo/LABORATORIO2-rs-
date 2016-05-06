@@ -39,7 +39,7 @@ public class UI {
             }
             servicio.serializar();
             System.out.println("1.Continuar menú de usuario");
-            m = lectura.read();
+            m = Integer.parseInt(lectura.readLine());
         }while(m==1);
     }
     
@@ -65,7 +65,7 @@ public class UI {
             } catch (NumberFormatException ex) {System.out.println("Opcion invalida");            }
             
             System.out.println("1.Continuar menú de busquedas");
-            m = lectura.read();
+            m = Integer.parseInt(lectura.readLine());
         }while(m==1);
     }
     
@@ -77,7 +77,7 @@ public class UI {
         do{
             try{
             System.out.println("1.Registrarse-2.Ingresar a Red Social-3.Busquedas-4.Reiniciar data");
-            int opcion = Integer.parseInt(lectura.readLine());
+            opcion = Integer.parseInt(lectura.readLine());
             switch(opcion){
                 case 1 :
                     servicio.crearUsuario();
