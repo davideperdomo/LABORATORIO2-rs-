@@ -9,7 +9,8 @@ import ui.UI;
 
 /**
  *
- * @author David
+ * @author David Esteban Perdomo
+ * @author Hugo Francisco Rincon
  */
 public class Main {
 

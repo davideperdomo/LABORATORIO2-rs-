@@ -27,10 +27,18 @@ public class Etiqueta implements Serializable{
     public int[] getCoordenadas() {
         return coordenadas;
     }
-    
+
+    public String getNick() {
+        return nick;
+    }
+        
     public void setCoordenadas(int coordenadax, int coordenaday) {
         int[] xy = {coordenadax, coordenaday};
         this.coordenadas = xy;
+    }
+
+    public void setNick(String nick) {
+        this.nick = nick;
     }
     /**
      * Se sobre escribe el metodo de la clase predeterminada Object
