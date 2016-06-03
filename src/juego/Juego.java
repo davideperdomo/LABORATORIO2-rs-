@@ -9,7 +9,6 @@ public class Juego {
         System.out.println("DATOS MARCIANO\n"+marciano.toString());
         System.out.println("");
         System.out.println("DATOS JUPITERIANO\n"+jupiteriano.toString());
-
+       
     }
-    
 }
